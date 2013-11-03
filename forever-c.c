@@ -21,6 +21,8 @@ void parse_opts(opts_t * opts, int argc, char ** argv) {
 			{ "sleep", required_argument, 0, 0 },
 			{ "verbose", no_argument, 0, 0 },
 			{ "exec", no_argument, 0, 0 },
+			{ "daemon", no_argument, 0, 0},
+			{ "bg", no_argument, 0, 0 },
 			{ 0, 0, 0, 0 }
 		};
 
@@ -47,6 +49,11 @@ void parse_opts(opts_t * opts, int argc, char ** argv) {
 			case 4: {
 				opts->exec = optind;
 				return;
+			}
+			case 5:
+			case 6: {
+				opts->daemon = 1;
+				break;
 			}
 			default: {
 				continue;
@@ -146,6 +153,12 @@ int main(int argc, char *argv[], char *envp[]) {
 	if(!opts.exec) usage("Specify --exec then your program arguments");
 
 	if(reset_args(opts.exec,&argc,&argv) < 0) usage("reset_args: Failed");
+
+	if(opts.daemon) {
+		int n;
+		n = daemon(0,0);
+		if(n > 0) exit(0);
+	}
 
 	while(1) {
 		p = fork();

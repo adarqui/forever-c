@@ -18,6 +18,7 @@ typedef struct opts {
 	int sleep;
 	char * desc;
 	char * name;
+	unsigned char daemon:1;
 	unsigned char verbose:1;
 	unsigned char exec;
 } opts_t;
