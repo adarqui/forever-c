@@ -1,0 +1,6 @@
+example:
+
+	make ; ./forever-c --name="ls" --desc="list files" --sleep=2 --exec /bin/ls -al
+
+
+--exec is the "separator". Anything that follows --exec is used as the arguments for the program you want to exec. When the child process exits, it'll log to syslog/stderr etc with some verbose info.
