@@ -3,7 +3,16 @@
 void usage(char * s) {
 	if(!s) s = "nevermind.";
 
-	printf("incorrect usage: %s\n\n\tforever-c <opts> original program arguments\n",s);
+	printf("incorrect usage: %s\n\n\tforever-c <opts> --exec original program arguments\n\n",s);
+
+	printf(
+		"\topts:\n"
+		"\t\t--name=<name>\n"
+		"\t\t--desc=<desc>\n"
+		"\t\t--daemon\n"
+		"\t\t--sleep=<num>\n"
+		"\t\t--exec program to run and it's arguments..\n"
+	);
 	exit(1);
 }
 

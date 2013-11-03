@@ -4,3 +4,17 @@ example:
 
 
 --exec is the "separator". Anything that follows --exec is used as the arguments for the program you want to exec. When the child process exits, it'll log to syslog/stderr etc with some verbose info.
+
+
+usage:
+
+incorrect usage: Specify --name="name"
+
+        forever-c <opts> --exec original program arguments
+
+        opts:
+                --name=<name>
+                --desc=<desc>
+                --daemon
+                --sleep=<num>
+                --exec program to run and it's arguments..
